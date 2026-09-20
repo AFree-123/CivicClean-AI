@@ -95,7 +95,7 @@ The final demo recording is included in this repository: [Watch / Open Demo Vide
 
 ## Project Presentation
 
-Project presentation/PPT can be added here after the final presentation file is prepared.
+[View Project Presentation](presentation/CivicClean-AI-Project.pdf)
 
 ## IBM Bob AI Usage
 
