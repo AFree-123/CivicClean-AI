@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout">
+  {% include "_sidebar.html" %}
+  <main class="app-main profile-main">
+    <header class="app-top"><div></div><div class="top-user"><span>♧</span><span class="avatar">A</span></div></header>
+
+    <div class="profile-layout">
+      <section class="profile-primary">
+        <div class="profile-cover-photo">
+          <img src="{{ url_for('static', filename='images/profile-cover.jpg') }}" alt="Green leaves nature cover">
+          <div class="profile-cover-shade"></div>
+          <button class="cover-action" type="button" onclick="showToast('Cover photo editing is available in the production version.')">▣ Change Cover Photo</button>
+          <div class="cover-message">Small Actions<br><span>Create a Greener Tomorrow</span></div>
+        </div>
+
+        <div class="profile-identity">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-large">F</div>
+            <button class="avatar-camera" type="button" onclick="showToast('Profile photo upload is available in the production version.')">⌾</button>
+          </div>
+          <div class="identity-details">
+            <div class="identity-name-row">
+              <h1>Afreena</h1>
+              <button class="icon-edit" type="button" onclick="toggleProfileEdit()">✎</button>
+            </div>
+            <p>afreena@example.com <button class="inline-edit" type="button" onclick="toggleProfileEdit()">✎</button></p>
+            <div class="identity-meta">
+              <span>⌖ Chennai, Tamil Nadu</span>
+              <span>▣ Joined Aug 2024</span>
+              <span class="citizen-badge">♧ Citizen</span>
+            </div>
+          </div>
+          <div class="identity-quote">“Clean Communities<br>Brighter Tomorrows”</div>
+        </div>
+
+        <div class="profile-stats">
+          <div><span class="stat-icon">▤</span><strong>5</strong><small>Reports Submitted</small></div>
+          <div><span class="stat-icon">♟</span><strong>3</strong><small>Events Joined</small></div>
+          <div><span class="stat-icon gold">★</span><strong>120</strong><small>Reward Points</small></div>
+          <div><span class="stat-icon">♧</span><strong>12 kg</strong><small>Waste Helped Remove</small></div>
+        </div>
+
+        <div class="profile-tabs">
+          <button class="profile-tab active" data-tab="personal" type="button">♟ <span>Personal Info</span></button>
+          <button class="profile-tab" data-tab="impact" type="button">▥ <span>Impact Stats</span></button>
+          <button class="profile-tab" data-tab="badges" type="button">★ <span>Badges</span></button>
+          <button class="profile-tab" data-tab="activity" type="button">◷ <span>Activity</span></button>
+          <button class="profile-tab" data-tab="settings" type="button">⚙ <span>Settings</span></button>
+        </div>
+
+        <div class="profile-tab-panel" id="tab-personal">
+          <div class="panel-heading"><div><h2>Personal Information</h2><p>Keep your CivicClean profile up to date.</p></div><button class="btn btn-primary btn-sm" type="button" onclick="toggleProfileEdit()">✎ Edit</button></div>
+          <div class="profile-form-grid" id="profile-form">
+            <label>Full Name<input value="Afreena" disabled></label>
+            <label>Role<select disabled><option>Citizen</option></select></label>
+            <label>Email Address<input value="afreena@example.com" disabled></label>
+            <label>Phone Number <span>(Optional)</span><input placeholder="Add phone number" disabled></label>
+            <label>Location<input value="Chennai, Tamil Nadu" disabled></label>
+            <label>Areas of Interest<input value="Beach Cleanup, Park Cleanup, Waste Management" disabled></label>
+            <label>Date of Birth <span>(Optional)</span><input placeholder="DD/MM/YYYY" disabled></label>
+            <label>Short Bio <span>(Optional)</span><textarea disabled>Passionate about a cleaner and greener environment. Let's make our city better together!</textarea></label>
+          </div>
+          <div class="edit-actions" id="edit-actions"><button class="btn btn-outline btn-sm" type="button" onclick="toggleProfileEdit()">Cancel</button><button class="btn btn-primary btn-sm" type="button" onclick="saveProfileDemo()">Save Changes</button></div>
+        </div>
+
+        <div class="profile-tab-panel hidden" id="tab-impact">
+          <div class="panel-heading"><div><h2>Your Impact</h2><p>Your contribution to cleaner communities.</p></div></div>
+          <div class="impact-grid"><div><strong>5</strong><span>Reports Submitted</span></div><div><strong>3</strong><span>Cleanup Events</span></div><div><strong>12 kg</strong><span>Waste Helped Remove</span></div><div><strong>120</strong><span>Reward Points</span></div></div>
+        </div>
+        <div class="profile-tab-panel hidden" id="tab-badges"><div class="panel-heading"><div><h2>Your Badges</h2><p>Milestones you have unlocked.</p></div></div><div class="badge-grid"><div>🌿<strong>First Report</strong><small>Submitted your first report</small></div><div>♻️<strong>Active Citizen</strong><small>5 reports submitted</small></div><div>👥<strong>Community Helper</strong><small>Joined cleanup events</small></div><div>★<strong>Rising Contributor</strong><small>100+ reward points</small></div></div></div>
+        <div class="profile-tab-panel hidden" id="tab-activity"><div class="panel-heading"><div><h2>Recent Activity</h2><p>Your latest CivicClean actions.</p></div></div><div class="activity-list"><div><span>▤</span><strong>Reported a waste issue</strong><small>Aug 12, 2024</small></div><div><span>♟</span><strong>Joined Beach Cleanup Event</strong><small>Aug 8, 2024</small></div><div><span>★</span><strong>Earned 50 reward points</strong><small>Aug 8, 2024</small></div><div><span>♻</span><strong>Completed cleanup activity</strong><small>Aug 5, 2024</small></div></div></div>
+        <div class="profile-tab-panel hidden" id="tab-settings"><div class="panel-heading"><div><h2>Settings</h2><p>Manage your account preferences.</p></div></div><div class="settings-list"><button type="button" onclick="showToast('Notification preferences will be connected to your account.')">Notifications <span>›</span></button><button type="button" onclick="showToast('Privacy controls are available in the production version.')">Privacy <span>›</span></button><button type="button" onclick="showToast('Password change will be available with authentication.')">Change Password <span>›</span></button></div></div>
+      </section>
+
+      <aside class="profile-side">
+        <div class="side-impact card-soft">
+          <div class="side-impact-icon">🌱</div><div class="side-impact-title">Your Impact Level</div><h2>Green Supporter</h2><p>Keep contributing to unlock new levels!</p>
+          <div class="level-row"><span>120 / 200 points</span></div><div class="level-bar"><span style="width:60%"></span></div>
+          <div class="next-level"><span>🌱</span><div><small>Next Level</small><strong>Eco Hero</strong></div><b>200 points</b></div>
+        </div>
+        <div class="card-soft badges-side"><div class="side-head"><h3>Your Badges</h3><button type="button" onclick="openTab('badges')">View All →</button></div><div class="badge-mini-grid"><div><span>🌿</span><b>First Report</b></div><div><span>♻️</span><b>Active Citizen</b></div><div><span>👥</span><b>Community Helper</b></div><div><span>★</span><b>Rising Contributor</b></div></div></div>
+        <div class="card-soft activity-side"><div class="side-head"><h3>Recent Activity</h3><button type="button" onclick="openTab('activity')">View All →</button></div><div class="side-activity"><div><span>▤</span><p>Reported a waste issue</p><small>Aug 12, 2024</small></div><div><span>♟</span><p>Joined Beach Cleanup Event</p><small>Aug 8, 2024</small></div><div><span>★</span><p>Earned 50 reward points</p><small>Aug 8, 2024</small></div><div><span>♻</span><p>Completed cleanup activity</p><small>Aug 5, 2024</small></div></div></div>
+        <div class="profile-leaf-note"><em>“Cleaner Communities<br>Happier People”</em><div class="leaf-corner">🌿</div></div>
+      </aside>
+    </div>
+  </main>
+</div>
+<script>
+function openTab(name){document.querySelectorAll('.profile-tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.profile-tab-panel').forEach(p=>p.classList.add('hidden'));const p=document.getElementById('tab-'+name);if(p)p.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.profile-tab').forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
+function toggleProfileEdit(){const form=document.getElementById('profile-form');const editing=form.classList.toggle('editing');form.querySelectorAll('input,select,textarea').forEach(el=>el.disabled=!editing);document.getElementById('edit-actions').classList.toggle('show',editing);}
+function saveProfileDemo(){toggleProfileEdit();showToast('Profile changes saved for this demo.');}
+</script>
+{% endblock %}

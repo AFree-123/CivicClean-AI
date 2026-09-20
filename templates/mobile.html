@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="mobile-preview-page">
+  <a class="back-home" href="{{ url_for('home') }}">← Back to CivicClean AI</a>
+  <h1>Mobile App UI Preview</h1>
+  <p>Responsive companion experience for citizens.</p>
+  <div class="phone-stage">
+    <div class="phone"><div class="phone-notch"></div><div class="phone-screen"><div class="mobile-brand">🍃<strong>CivicClean AI</strong><small>Cleaner Today • Greener Tomorrow</small></div><div class="mobile-card"><span>Nearby Tasks</span><input placeholder="⌕ Search location..."><img src="{{ url_for('static', filename='images/map.svg') }}"><div class="mini-task"><img src="{{ url_for('static', filename='images/waste-1.svg') }}"><div><strong>Garbage pile near park</strong><small>1.2 km • 2 days left</small></div></div><button class="btn btn-primary btn-block">View Details</button></div><div class="mobile-nav"><span>⌂<small>Home</small></span><span>▣<small>Reports</small></span><span>✓<small>Tasks</small></span><span>♙<small>Profile</small></span></div></div></div>
+    <div class="phone second"><div class="phone-notch"></div><div class="phone-screen"><div class="mobile-brand">🍃<strong>Nearby Tasks</strong></div><img class="map-large" src="{{ url_for('static', filename='images/map.svg') }}"><div class="mini-task"><img src="{{ url_for('static', filename='images/waste-2.svg') }}"><div><strong>Plastic waste on road</strong><small>2.5 km • 3 days left</small></div></div></div></div>
+  </div>
+</div>
+{% endblock %}

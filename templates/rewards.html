@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout rewards-page">
+  {% include "_sidebar.html" %}
+  <main class="app-main">
+    <header class="app-top"><div></div><div class="top-user"><span>♧</span><span class="avatar">A</span></div></header>
+
+    <section class="page-head rewards-head">
+      <div><h1>My Rewards</h1><p>Your contribution makes a difference!</p></div>
+    </section>
+
+    <section class="rewards-showcase">
+      <div class="points-panel">
+        <div class="points-ring">
+          <div><strong>120</strong><span>Total Points</span></div>
+        </div>
+        <div class="points-copy">
+          <span class="eyebrow">YOUR IMPACT</span>
+          <h2>You're making<br>a cleaner city!</h2>
+          <p>Keep reporting waste and taking action in your community.</p>
+        </div>
+      </div>
+
+      <div class="rewards-quote">
+        <span class="quote-leaf">♧</span>
+        <p>“A cleaner city is<br>a happier city!”</p>
+      </div>
+
+      <div class="reward-badges">
+        <div class="reward-badge"><span>🍃</span><strong>Eco Hero</strong><small>50+ points</small></div>
+        <div class="reward-badge"><span>♻</span><strong>Clean Champion</strong><small>100+ points</small></div>
+        <div class="reward-badge"><span>🌱</span><strong>Green Guardian</strong><small>200+ points</small></div>
+        <div class="reward-badge"><span>👥</span><strong>Community Builder</strong><small>500+ points</small></div>
+      </div>
+
+      <div class="rewards-leaf-photo">
+        <img src="{{ url_for('static', filename='images/rewards-leaf.jpg') }}" alt="Green leaf nature">
+      </div>
+    </section>
+
+    <div class="tabs rewards-tabs">
+      <button class="selected" type="button" onclick="showRewardTab('history', this)">History</button>
+      <button type="button" onclick="showRewardTab('redeem', this)">Redeem</button>
+    </div>
+
+    <section class="content-card reward-history-card" id="reward-history">
+      <div class="section-title"><div><h2>Recent Activity</h2><p>Your latest community contributions</p></div><span class="reward-total">120 pts</span></div>
+      {% for item in [('Area cleanup - Anna Nagar','Aug 12, 2024','+50 points'),('Beach cleanup - Marina','Aug 8, 2024','+50 points'),('Park cleanup - T. Nagar','Aug 5, 2024','+20 points')] %}
+      <div class="reward-row">
+        <span class="round-icon">♻</span>
+        <div><strong>{{ item[0] }}</strong><small>{{ item[1] }}</small></div>
+        <b>{{ item[2] }}</b>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="content-card" id="reward-redeem" style="display:none">
+      <div class="empty-state"><span class="empty-icon">★</span><h3>Rewards Redemption</h3><p>Redeemable community rewards will appear here after Supabase is connected.</p><button class="btn btn-primary" type="button" onclick="showToast('Redemption catalogue coming in the backend phase.')">View Available Rewards</button></div>
+    </section>
+  </main>
+</div>
+{% endblock %}

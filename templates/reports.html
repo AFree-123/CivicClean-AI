@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout reports-page">
+  {% include "_sidebar.html" %}
+  <main class="app-main reports-main">
+    <header class="app-top"><div></div><div class="top-user"><span>♧</span><span class="avatar">A</span></div></header>
+
+    <section class="reports-welcome">
+      <div>
+        <div class="reports-eyebrow">CIVICCLEAN AI • YOUR IMPACT</div>
+        <h1>My Reports</h1>
+        <p>Track your waste reports and see the difference you create.</p>
+      </div>
+      <a class="btn btn-primary reports-new-btn" href="{{ url_for('report') }}">＋ New Report</a>
+    </section>
+
+    <section class="reports-stats">
+      <div class="reports-stat"><div class="reports-stat-icon blue">▤</div><div><strong>5</strong><small>Total Reports</small></div></div>
+      <div class="reports-stat"><div class="reports-stat-icon green">✓</div><div><strong>2</strong><small>Resolved</small></div></div>
+      <div class="reports-stat"><div class="reports-stat-icon cyan">◷</div><div><strong>2</strong><small>In Progress</small></div></div>
+      <div class="reports-stat"><div class="reports-stat-icon yellow">⌛</div><div><strong>1</strong><small>Pending</small></div></div>
+    </section>
+
+    <section class="reports-toolbar">
+      <div class="reports-tabs">
+        <button class="active">All (5)</button><button>Pending (1)</button><button>In Progress (2)</button><button>Resolved (2)</button>
+      </div>
+      <select class="reports-sort"><option>Latest First</option><option>Oldest First</option></select>
+    </section>
+
+    <section class="reports-grid">
+      {% set items = [
+        ('Garbage pile near park','Anna Nagar, Chennai','Pending','Aug 12, 2024','my-reports-garbage.jpg'),
+        ('Plastic waste on road','T. Nagar, Chennai','In Progress','Aug 10, 2024','my-reports-plastic.jpg'),
+        ('Construction waste','Velachery, Chennai','Resolved','Aug 8, 2024','my-reports-construction.jpg')
+      ] %}
+      {% for item in items %}
+      <article class="my-report-card">
+        <div class="my-report-image-wrap">
+          <img src="{{ url_for('static', filename='images/' ~ item[4]) }}" alt="{{ item[0] }}">
+          <span class="status {{ item[2]|lower|replace(' ','-') }}">{{ item[2] }}</span>
+        </div>
+        <div class="my-report-body">
+          <h2>{{ item[0] }}</h2>
+          <p class="report-location">⌖ {{ item[1] }}</p>
+          <div class="report-date">▣ {{ item[3] }}</div>
+          <a href="#" class="view-report-btn">View Details <span>→</span></a>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <div class="reports-leaf leaf-a">🍃</div>
+    <div class="reports-leaf leaf-b">🌿</div>
+  </main>
+</div>
+{% endblock %}

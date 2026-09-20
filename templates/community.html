@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout community-page">
+  {% include '_sidebar.html' %}
+  <main class="app-main community-main">
+    <div class="app-top"><span></span><div class="top-user">Citizen <span class="avatar">A</span></div></div>
+
+    <section class="community-head">
+      <div>
+        <div class="community-eyebrow">CLEANER CHENNAI • COMMUNITY IN ACTION</div>
+        <h1>Community</h1>
+        <p>Explore cleanups near you. Discover activities and join the movement.</p>
+      </div>
+      <div class="community-search"><span>⌕</span><input type="text" placeholder="Search location..."><button type="button">⌖</button></div>
+    </section>
+
+    <section class="community-map-grid">
+      <div class="community-map-card">
+        <div class="map-topbar"><strong>Cleanup Activity Map</strong><span>Chennai</span></div>
+        <div class="chennai-map">
+          <div class="map-road road-a"></div><div class="map-road road-b"></div><div class="map-road road-c"></div>
+          <div class="map-water"></div>
+          <div class="map-label label-1">Anna Nagar</div><div class="map-label label-2">T. Nagar</div><div class="map-label label-3">Adyar</div><div class="map-label label-4">Besant Nagar</div><div class="map-label label-5">Velachery</div>
+          <span class="map-pin pin-1">●</span><span class="map-pin pin-2">●</span><span class="map-pin pin-3">●</span><span class="map-pin pin-4">●</span><span class="map-pin pin-5">●</span>
+          <div class="map-callout"><strong>Beach Cleanup</strong><small>Besant Nagar</small><small>Aug 20, 2024</small></div>
+          <div class="map-zoom"><button>+</button><button>−</button></div>
+        </div>
+      </div>
+
+      <div class="nearby-card">
+        <div class="nearby-head"><div><h2>Nearby Community Activities</h2><p>Join a cleanup happening around you.</p></div><a href="#">View All →</a></div>
+        <div class="activity-list">
+          <article class="activity-item"><img src="{{ url_for('static', filename='images/community-beach.jpg') }}"><div><strong>Marina Beach Cleanup</strong><small>2.5 km • Aug 20, 2024</small><span>Beach cleanup</span></div><button type="button">Join</button></article>
+          <article class="activity-item"><img src="{{ url_for('static', filename='images/community-park.jpg') }}"><div><strong>Anna Nagar Park Drive</strong><small>3.8 km • Aug 25, 2024</small><span>Park cleanup</span></div><button type="button">Join</button></article>
+          <article class="activity-item"><img src="{{ url_for('static', filename='images/community-cleanup.jpg') }}"><div><strong>Adyar River Cleanup</strong><small>4.1 km • Aug 26, 2024</small><span>Waste collection</span></div><button type="button">Join</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-action-card">
+      <div class="action-photo"><img src="{{ url_for('static', filename='images/community-main.jpg') }}" alt="Community cleanup activity"></div>
+      <div class="action-copy"><div class="community-eyebrow">COMMUNITY IN ACTION</div><h2>Small actions. Cleaner Chennai.</h2><p>Discover local cleanup activities, meet people who care, and help create healthier neighbourhoods.</p><button class="btn btn-primary" type="button">Explore Activities →</button></div>
+      <div class="action-stat"><strong>8,320</strong><span>Total Cleanups</span><small>Across the community</small></div>
+    </section>
+  </main>
+</div>
+{% endblock %}

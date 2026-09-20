@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="auth-page">
+  <a class="auth-brand" href="{{ url_for('home') }}"><span class="brand-mark">🍃</span><strong>CivicClean AI</strong></a>
+  <div class="auth-card">
+    <div class="auth-logo">🍃</div>
+    <h1>Welcome Back!</h1>
+    <p>Login to continue</p>
+    <form method="post" class="form-stack">
+      <label>Email Address<input type="email" name="email" placeholder="you@example.com" required></label>
+      <label>Password<input type="password" name="password" placeholder="Enter your password" required></label>
+      <div class="forgot"><a href="#">Forgot password?</a></div>
+      <button class="btn btn-primary btn-block" type="submit">Login</button>
+    </form>
+    <div class="or">or continue with</div>
+    <div class="social-row"><button>🌈 Google</button><button>▦ Microsoft</button></div>
+    <p class="auth-bottom">Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
+  </div>
+</div>
+{% endblock %}

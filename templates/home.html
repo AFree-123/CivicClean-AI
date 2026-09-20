@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="site-shell">
+  <header class="public-nav">
+    <a class="brand" href="{{ url_for('home') }}">
+      <span class="brand-mark">🍃</span>
+      <span><strong>CivicClean AI</strong><small>Cleaner Today • Greener Tomorrow</small></span>
+    </a>
+    <nav class="public-actions">
+      <a class="nav-login" href="{{ url_for('login') }}">Login</a>
+      <a class="btn btn-primary btn-sm" href="{{ url_for('register') }}">Sign Up</a>
+    </nav>
+  </header>
+
+  <main class="hero-wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">● Clean Cities, Bright Futures</span>
+        <h1>Together for a <span>Cleaner, Greener</span> Tomorrow</h1>
+        <p>Report waste, take action, earn rewards. Let’s build a cleaner and healthier community with the power of people and AI.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="{{ url_for('register') }}">Get Started</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="impact-bubble"><small>Small Actions</small><strong>Big Impact</strong></div>
+        <div class="hero-photo" role="img" aria-label="Hands holding a globe, representing care for our planet"></div>
+      </div>
+    </section>
+
+    <section class="stats-strip" id="impact">
+      <div><strong>12,450</strong><span>Waste Reports</span></div>
+      <div><strong>8,320</strong><span>Cleanups Completed</span></div>
+      <div><strong>5,200</strong><span>Community Members</span></div>
+      <div><strong>25 Tons</strong><span>Waste Removed</span></div>
+    </section>
+
+    <footer class="landing-footer">Clean Communities. Sustainable Futures.</footer>
+  </main>
+</div>
+{% endblock %}

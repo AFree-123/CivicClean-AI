@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout report-page">
+  {% include "_sidebar.html" %}
+  <main class="app-main report-main">
+    <header class="app-top">
+      <a href="{{ url_for('dashboard') }}" class="back">←</a>
+      <div class="top-user"><span>♧</span><span class="avatar">A</span></div>
+    </header>
+
+    <section class="report-hero-banner">
+      <img src="{{ url_for('static', filename='images/report-waste-hero.jpg') }}" alt="Community cleanup">
+      <div class="report-hero-overlay">
+        <div class="report-hero-kicker">TOGETHER FOR A CLEANER TOMORROW</div>
+        <h1>Report Waste</h1>
+        <p>Spotted waste? Let us know and help make Chennai cleaner.</p>
+      </div>
+      <div class="report-hero-quote">Small Actions<br><span>Big Impact</span> 🍃</div>
+    </section>
+
+    <section class="report-form-card">
+      <div class="report-form-head">
+        <div>
+          <h2>Tell us what you found</h2>
+          <p>Upload a photo and add a few details. AI analysis will help categorize the report.</p>
+        </div>
+        <span class="round-icon">▣</span>
+      </div>
+
+      <form method="post" enctype="multipart/form-data" class="report-form-grid">
+        <label class="report-upload-box">
+          <span class="upload-icon">☁</span>
+          <strong>Upload Photo</strong>
+          <small>Drag and drop or click to upload</small>
+          <em>JPG, PNG (Max 10MB)</em>
+          <input type="file" name="photo" accept="image/*">
+        </label>
+
+        <div class="report-fields">
+          <label>Location
+            <button type="button" class="location-btn">◎ Use Current Location</button>
+            <input value="Anna Nagar, Chennai, Tamil Nadu">
+          </label>
+
+          <div class="report-two-col">
+            <label>Waste Type
+              <select>
+                <option>Select waste type</option>
+                <option>Plastic Waste</option>
+                <option>Food Waste</option>
+                <option>Paper Waste</option>
+                <option>Metal Waste</option>
+                <option>Mixed Waste</option>
+              </select>
+            </label>
+            <label>Description (Optional)
+              <input placeholder="Add more details...">
+            </label>
+          </div>
+
+          <button class="btn btn-primary report-submit" type="submit">➤ &nbsp; Submit Report</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="report-leaf leaf-one">🍃</div>
+    <div class="report-leaf leaf-two">🍃</div>
+    <div class="report-leaf leaf-three">🍃</div>
+  </main>
+</div>
+{% endblock %}

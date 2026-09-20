@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout citizen-dashboard">
+  {% include "_sidebar.html" %}
+  <main class="app-main">
+    <header class="app-top">
+      <div></div>
+      <div class="top-user"><span class="top-bell">♧</span><span class="avatar">A</span></div>
+    </header>
+
+    <section class="dashboard-welcome">
+      <div>
+        <h1>Welcome, Afreena!</h1>
+        <p>Let's make your city cleaner today.</p>
+      </div>
+    </section>
+
+    <section class="dashboard-hero">
+      <img src="{{ url_for('static', filename='images/dashboard-hero.jpg') }}" alt="Community waste cleanup">
+      <div class="dashboard-hero-overlay">
+        <div class="hero-kicker">CIVICCLEAN AI</div>
+        <h2>A Cleaner<br>Tomorrow<br>Starts with You</h2>
+        <p>Report waste. Create change.<br>Earn rewards.</p>
+        <a class="btn btn-primary hero-report-btn" href="{{ url_for('report') }}">＋ Report New Waste</a>
+      </div>
+      <div class="hero-impact">
+        <span>♻</span>
+        <strong>Clean Communities<br>Stronger Futures</strong>
+      </div>
+    </section>
+
+    <section class="metric-grid dashboard-metrics">
+      <div class="metric-card"><span class="metric-icon blue">▣</span><strong>5</strong><small>Reports Submitted</small></div>
+      <div class="metric-card"><span class="metric-icon green">✓</span><strong>2</strong><small>Resolved</small></div>
+      <div class="metric-card"><span class="metric-icon yellow">★</span><strong>120</strong><small>Reward Points</small></div>
+    </section>
+
+    <a class="btn btn-primary btn-xl report-cta" href="{{ url_for('report') }}">＋ Report New Waste</a>
+
+    <section class="content-card recent-report-card">
+      <div class="section-title">
+        <h2>Recent Reports</h2>
+        <a href="{{ url_for('reports') }}">View All Reports →</a>
+      </div>
+      <div class="report-list dashboard-report-grid">
+        {% for item in [
+          ('Garbage pile near park','Anna Nagar, Chennai','Pending','Aug 12, 2024','my-reports-garbage.jpg'),
+          ('Plastic waste on road','T. Nagar, Chennai','In Progress','Aug 10, 2024','my-reports-plastic.jpg'),
+          ('Construction waste','Velachery, Chennai','Resolved','Aug 8, 2024','my-reports-construction.jpg')
+        ] %}
+        <div class="report-tile">
+          <img src="{{ url_for('static', filename='images/' ~ item[4]) }}" alt="{{ item[0] }}">
+          <div class="report-tile-body">
+            <strong>{{ item[0] }}</strong>
+            <small>{{ item[1] }}</small>
+            <div class="report-tile-bottom">
+              <span class="status {{ item[2]|lower|replace(' ','-') }}">{{ item[2] }}</span>
+              <small>{{ item[3] }}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}

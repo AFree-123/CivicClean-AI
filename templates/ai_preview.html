@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout">
+  {% include "_sidebar.html" %}
+  <main class="app-main narrow-main">
+    <header class="app-top"><a href="{{ url_for('report') }}" class="back">←</a><div class="top-user"><span>♧</span><span class="avatar">A</span></div></header>
+    <section class="content-card ai-card">
+      <div class="section-title"><div><h1>AI Waste Detection</h1><p>Our AI will automatically detect waste in your image</p></div><span class="round-icon ai">✦</span></div>
+      <div class="detection-image">
+        <img src="{{ url_for('static', filename='images/waste-detection.svg') }}" alt="AI waste detection preview">
+        <span class="tag tag-plastic">Plastic 0.92</span><span class="tag tag-paper">Paper 0.87</span><span class="tag tag-metal">Metal 0.78</span>
+      </div>
+      <h3>Detection Results</h3>
+      <div class="result-row"><span class="result-dot green">♻</span><strong>Plastic Waste</strong><b>92%</b></div>
+      <div class="result-row"><span class="result-dot blue">▣</span><strong>Paper Waste</strong><b>87%</b></div>
+      <div class="result-row"><span class="result-dot red">●</span><strong>Metal Waste</strong><b>78%</b></div>
+      <a class="btn btn-primary btn-block" href="{{ url_for('dashboard') }}">Continue to Report</a>
+    </section>
+  </main>
+</div>
+{% endblock %}

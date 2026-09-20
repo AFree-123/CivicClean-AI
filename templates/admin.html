@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar"><a class="brand compact" href="{{ url_for('admin') }}"><span class="brand-mark">🍃</span><span><strong>CivicClean AI</strong></span></a><nav class="side-nav"><a class="active" href="{{ url_for('admin') }}">▦ <span>Dashboard</span></a><a href="{{ url_for("reports") }}">▤ <span>Reports</span></a><a href="{{ url_for('reports') }}">✓ <span>Review Reports</span></a><a href="{{ url_for('community') }}">♙ <span>Community</span></a><a href="{{ url_for('rewards') }}">★ <span>Rewards</span></a><a href="{{ url_for("admin") }}">◈ <span>Analytics</span></a><a href="{{ url_for("profile") }}">⚙ <span>Settings</span></a></nav></aside>
+  <main class="app-main">
+    <header class="app-top"><div></div><div class="top-user"><span>♧</span><span class="avatar blue-avatar">A</span></div></header>
+    <section class="page-head"><div><h1>Overview</h1><p>Manage and monitor the system</p></div></section>
+    <section class="admin-metrics">
+      <div><span>▣</span><strong>1,248</strong><small>Total Reports</small></div><div><span>✓</span><strong>856</strong><small>Resolved</small></div><div><span>♧</span><strong>320</strong><small>Community Members</small></div><div><span>♻</span><strong>25 Tons</strong><small>Waste Removed</small></div>
+    </section>
+    <section class="content-card chart-card"><div class="section-title"><h2>Reports Over Time</h2></div><div class="fake-chart"><div style="height:25%"><i>Jan</i></div><div style="height:48%"><i>Feb</i></div><div style="height:45%"><i>Mar</i></div><div style="height:70%"><i>Apr</i></div><div style="height:56%"><i>May</i></div><div style="height:82%"><i>Jun</i></div></div></section>
+  </main>
+</div>
+{% endblock %}
